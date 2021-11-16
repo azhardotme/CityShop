@@ -30,28 +30,27 @@
                 <table class="table table-striped table-bordered bootstrap-datatable datatable">
                   <thead>
                       <tr>
-                          <th>ID</th>
-                          <th>Name</th>
+                          <th>Sub Category ID</th>
+                          <th>Sub Category Name</th>
+                          <th>Category Name</th>
                           <th>Description</th>
-                          <th>Image</th>
                           <th>Status</th>
                           <th style="text-align:center;">Actions</th>
                       </tr>
                   </thead>
                   <tbody>
 
-                        @foreach ($category as $category)
+                        @foreach ($subcategories as $subcategory)
 
 
                      <tr>
-                        <td>{{$category->id}}</td>
-                        <td>{{$category->name}}</td>
-                        <td class="center">{!! $category->description !!}</td>
+                        <td>{{$subcategory->id}}</td>
+                        <td>{{$subcategory->name}}</td>
+                        <td>{{$subcategory->category->name}}</td>
+                        <td class="center">{!! $subcategory->description !!}</td>
+
                         <td class="center">
-                            <img src="/categoriesimage/{{$category->image}}" style=" height:80px; width:100px;" alt="Category-Image">
-                        </td>
-                        <td class="center">
-                            @if ($category->status==1)
+                            @if ($subcategory->status==1)
                             <span class="label label-success">Active</span>
                             @else
                             <span class="label label-danger">Deactive</span>
@@ -61,23 +60,23 @@
                         <td class="row">
                             <div class="span3"></div>
                             <div class="span2">
-                                @if ($category->status==1)
-                                <a class="btn btn-success" href="{{url('/category-status'.$category->id)}}">
+                                @if ($subcategory->status==1)
+                                <a class="btn btn-success" href="{{url('/subcategory-status'.$subcategory->id)}}">
                                     <i class="halflings-icon white thumbs-down"></i>
                                 </a>
                                 @else
-                                <a class="btn btn-danger" href="{{url('/category-status'.$category->id)}}">
+                                <a class="btn btn-danger" href="{{url('/subcategory-status'.$subcategory->id)}}">
                                     <i class="halflings-icon white thumbs-up"></i>
                                 </a>
                                 @endif
                            </div>
                                 <div class="span2">
-                                    <a class="btn btn-info" href="{{url('/categories/'.$category->id.'/edit')}}">
+                                    <a class="btn btn-info" href="{{url('/sub-categories/'.$subcategory->id.'/edit')}}">
                                         <i class="halflings-icon white edit"></i>
                                     </a>
                                 </div>
                                 <div class="span2">
-                                    <form action="{{url('/categories/'.$category->id)}}" method="POST">
+                                    <form action="{{url('/sub-categories/'.$subcategory->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger">

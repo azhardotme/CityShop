@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\SuperAdminController;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,7 @@ Route::post('/admin-dashboard', [AdminController::class, 'show_dashboard']);
 //Category route
 Route::resource('/categories', CategoryController::class);
 Route::get('/category-status{category}', [CategoryController::class, 'change_status']);
+
+//Sub Category route
+Route::resource('/sub-categories', SubCategoryController::class);
+Route::get('/subcategory-status{subcategory}', [SubCategoryController::class, 'change_status']);
