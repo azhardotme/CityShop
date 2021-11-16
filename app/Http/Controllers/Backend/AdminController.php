@@ -17,7 +17,7 @@ class AdminController extends Controller
         return view('backend.admin.admin_login');
     }
 
-   
+
 
     public function show_dashboard(Request $request)
 
