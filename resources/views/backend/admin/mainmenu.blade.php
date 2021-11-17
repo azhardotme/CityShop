@@ -35,6 +35,30 @@
                 </ul>
             </li>
 
+            <li>
+                <a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">Size</span></a>
+                <ul>
+                    <li><a class="submenu" href="{{url('/sizes/create')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">Add Size</span></a></li>
+                    <li><a class="submenu" href="{{url('/sizes')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">All Sizes</span></a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">Color</span></a>
+                <ul>
+                    <li><a class="submenu" href="{{url('/colors/create')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">Add Color</span></a></li>
+                    <li><a class="submenu" href="{{url('/colors')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">All Colors</span></a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">Product</span></a>
+                <ul>
+                    <li><a class="submenu" href="{{url('/products/create')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">Add Product</span></a></li>
+                    <li><a class="submenu" href="{{url('/products')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">All Products</span></a></li>
+                </ul>
+            </li>
+
 
 
 

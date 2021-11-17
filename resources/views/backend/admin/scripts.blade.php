@@ -51,6 +51,6 @@
 		<script src="{{asset('backend/js/counter.js')}}"></script>
 
 		<script src="{{asset('backend/js/retina.js')}}"></script>
-
+		<script src="{{asset('backend/js/bootstrap-tagsinput.min.js')}}"></script>
 		<script src="{{asset('backend/js/custom.js')}}"></script>
 	<!-- end: JavaScript-->
