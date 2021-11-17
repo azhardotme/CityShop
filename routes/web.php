@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\BrandController;
+use App\Http\Controllers\Backend\UnitController;
 use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,3 +31,8 @@ Route::get('/subcategory-status{subcategory}', [SubCategoryController::class, 'c
 //Brand route
 Route::resource('/brands', BrandController::class);
 Route::get('/brands-status{brand}', [BrandController::class, 'change_status']);
+
+
+//Brand route
+Route::resource('/units', UnitController::class);
+Route::get('/unit-status{unit}', [UnitController::class, 'change_status']);
