@@ -22,8 +22,10 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+
     {
-        //
+        $products = Product::all();
+        return view('backend.admin.product.index', compact('products'));
     }
 
     /**
@@ -51,7 +53,42 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $product = new Product;
+        $product->name = $request->name;
+        $product->cat_id = $request->category;
+        $product->subcat_id = $request->subcategory;
+        $product->brand_id = $request->brand;
+        $product->unit_id = $request->unit;
+        $product->size_id = $request->size;
+        $product->color_id = $request->color;
+        $product->code = $request->code;
+        $product->description = $request->description;
+        $product->price = $request->price;
+
+        //Multiple  Images Store
+        $images = array();
+        if ($files = $request->file('file')) {
+            $i = 0;
+            foreach ($files as $file) {
+                $name = $file->getClientOriginalName();
+                $fileNameExtract = explode('.', $name);
+                $fileName = $fileNameExtract[0];
+                $fileName .= time();
+                $fileName .= $i;
+                $fileName .= '.';
+                $fileName .= $fileNameExtract[1];
+                $file->move('image', $fileName);
+                $images[] = $fileName;
+                $i++;
+            }
+
+            $product['image'] = implode("|", $images);
+            $product->save();
+
+            return redirect('/products')->with('message', 'Product Successfully Createtd!!');
+        } else {
+            echo "Some Error Found!";
+        }
     }
 
     /**
@@ -60,9 +97,15 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function change_status(Product $product)
     {
-        //
+        if ($product->status == 1) {
+
+            $product->update(['status' => 0]);
+        } else {
+            $product->update(['status' => 1]);
+        }
+        return redirect()->back()->with('message', 'Status updated successfully!');
     }
 
     /**
@@ -71,9 +114,17 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+
+        $categories = Category::all();
+        $subcategories = SubCategory::all();
+        $brands = Brand::all();
+        $units = Unit::all();
+        $sizes = Size::all();
+        $colors = Color::all();
+
+        return view('backend.admin.product.edit', compact('categories', 'subcategories', 'brands', 'units', 'sizes', 'colors', 'product'));
     }
 
     /**
@@ -83,9 +134,24 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        $update = $product->update([
+            'name' => $request->name,
+            'code' => $request->code,
+            'price' => $request->price,
+            'cat_id' => $request->category,
+            'subcat_id' => $request->subcategory,
+            'brand_id' => $request->brand,
+            'unit_id' => $request->unit,
+            'size_id' => $request->size,
+            'color_id' => $request->color,
+            'description' => $request->description,
+        ]);
+
+        if ($update) {
+            return redirect('/products')->with('message', 'Product Successfully Updated!');
+        }
     }
 
     /**
@@ -94,8 +160,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $delete = $product->delete();
+        return redirect()->back()->with('message', 'Size Successfully Deleted!!');
     }
 }
