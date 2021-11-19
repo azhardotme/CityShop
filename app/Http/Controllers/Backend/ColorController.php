@@ -84,13 +84,13 @@ class ColorController extends Controller
     public function update(Request $request, Color $color)
     {
 
-        // $sizes = explode(',', $request->size);
-        // $update = $size->update([
-        //     'size' => json_encode($sizes)
-        // ]);
-        // if ($update) {
-        //     return redirect('/sizes')->with('message', 'Size Updated Successfully!');
-        // }
+        $colors = explode(',', $request->color);
+        $update = $color->update([
+            'color' => Json_encode($colors),
+        ]);
+        if ($update) {
+            return redirect('/colors')->with('message', 'Color Updated Successfully!');
+        }
     }
     /**
      * Remove the specified resource from storage.
@@ -100,7 +100,7 @@ class ColorController extends Controller
      */
     public function destroy(Color $color)
     {
-        $dalete = $color->delete();
+        $delete = $color->delete();
         return redirect()->back()->with('message', 'Color Successfully Deleted!!');
     }
 }

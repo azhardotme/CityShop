@@ -30,7 +30,7 @@
                 <div class="control-group">
                     <label class="control-label" for="date01">Size Name</label>
                     <div class="controls">
-                        <input type="text" class="input-xlarge" name="size" id="input" data-role="tagsinput" value="{{implode(',',json_decode($size->size))}}" required>
+                        <input type="text" class="input-xlarge" name="size" id="input" data-role="tagsinput" value="{{implode(',',Json_decode($size->size))}}" required>
                     </div>
                 </div>
 

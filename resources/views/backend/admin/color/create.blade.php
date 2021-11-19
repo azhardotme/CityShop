@@ -36,7 +36,7 @@
                 <div class="control-group">
                     <label class="control-label" for="date01">Color Name</label>
                     <div class="controls">
-                        <input type="text" class="input-xlarge" name="size" id="input" data-role="tagsinput" required>
+                        <input type="text" class="input-xlarge" name="color" id="input" data-role="tagsinput" required>
                     </div>
                 </div>
                 <div class="form-actions">

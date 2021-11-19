@@ -60,7 +60,7 @@
 
 
                 <div class="control-group">
-                    <label class="control-label">Select Category</label>
+                    <label class="control-label">Category</label>
                     <div class="controls">
                        <select name="category">
                            <option>Select Category</option>
@@ -74,7 +74,7 @@
                 </div>
 
                 <div class="control-group">
-                    <label class="control-label">Select Sub Category</label>
+                    <label class="control-label">Sub Category</label>
                     <div class="controls">
                        <select name="subcategory">
                            <option>Select Sub Category</option>
@@ -87,7 +87,7 @@
                 </div>
 
                 <div class="control-group">
-                    <label class="control-label">Select Brand</label>
+                    <label class="control-label">Brand</label>
                     <div class="controls">
                        <select name="brand">
                            <option>Select Brand</option>
@@ -100,12 +100,12 @@
                 </div>
 
                 <div class="control-group">
-                    <label class="control-label">Select Size</label>
+                    <label class="control-label">Size</label>
                     <div class="controls">
                        <select name="size">
                            <option>Select Size</option>
                            @foreach ($sizes as $size)
-                           <option value="{{$size->id}}">{{$size->name}}</option>
+                           <option value="{{$size->id}}">{{$size->size}}</option>
                            @endforeach
 
                        </select>
@@ -114,19 +114,19 @@
 
 
                 <div class="control-group">
-                    <label class="control-label">Select Color</label>
+                    <label class="control-label">Color</label>
                     <div class="controls">
                        <select name="color">
                            <option>Select Color</option>
                            @foreach ($colors as $color)
-                           <option value="{{$color->id}}">{{$color->name}}</option>
+                           <option value="{{$color->id}}">{{$color->color}}</option>
                            @endforeach
 
                        </select>
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label">Select Unit</label>
+                    <label class="control-label">Unit</label>
                     <div class="controls">
                        <select name="unit">
                            <option>Select Unit</option>

@@ -84,13 +84,13 @@ class SizeController extends Controller
     public function update(Request $request, Size $size)
     {
 
-        // $sizes = explode(',', $request->size);
-        // $update = $size->update([
-        //     'size' => json_encode($sizes)
-        // ]);
-        // if ($update) {
-        //     return redirect('/sizes')->with('message', 'Size Updated Successfully!');
-        // }
+        $sizes = explode(',', $request->size);
+        $update = $size->update([
+            'size' => Json_encode($sizes),
+        ]);
+        if ($update) {
+            return redirect('/sizes')->with('message', 'Size Updated Successfully!');
+        }
     }
     /**
      * Remove the specified resource from storage.

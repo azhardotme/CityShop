@@ -41,11 +41,11 @@
                      <tr>
                         <td>{{$color->id}}</td>
                         <td>
-                            {{-- @foreach (Json_decode($size->size) as $sizes)
+                            @foreach (Json_decode($color->color) as $colors)
                                 <ul class="span4">
-                                    <li>{{$sizes}}</li>
+                                    <li>{!!$colors!!}</li>
                                 </ul>
-                            @endforeach --}}
+                            @endforeach
                         </td>
 
                         <td class="center">
