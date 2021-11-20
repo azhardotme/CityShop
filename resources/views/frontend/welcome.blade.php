@@ -12,7 +12,7 @@
                 <div class="shop">
                     <div class="shop-img">
                         <td>
-                            <img src="{{asset('/categoriesimage/'.$category->image)}}" alt="">
+                            <img src="{{asset('/categoriesimage/'.$category->image)}}" alt="" style="height: 200px" width="80px">
                         </td>
                     </div>
                     <div class="shop-body">
@@ -69,7 +69,7 @@
 
                                 <div class="product">
                                     <div class="product-img">
-                                        <img src="{{asset('/image/'.$images)}}" alt="">
+                                        <img src="{{asset('/image/'.$images)}}" alt="Product Image" style="height: 250px" width="200px">
                                         <div class="product-label">
                                             <span class="sale">-30%</span>
                                             <span class="new">NEW</span>

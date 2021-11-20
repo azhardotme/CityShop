@@ -40,7 +40,7 @@
                   </thead>
                   <tbody>
 
-                        @foreach ($category as $category)
+                        @foreach ($categories as $category)
 
 
                      <tr>

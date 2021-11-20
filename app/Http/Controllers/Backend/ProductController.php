@@ -7,12 +7,11 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Brand;
 use App\Models\Unit;
-use App\Models\Admin;
 use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\Color;
 use App\Models\Size;
-use App\Models\User;
+
 
 class ProductController extends Controller
 {
@@ -24,6 +23,7 @@ class ProductController extends Controller
     public function index()
 
     {
+
         $products = Product::all();
         return view('backend.admin.product.index', compact('products'));
     }

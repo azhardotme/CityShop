@@ -23,8 +23,13 @@ class HomeController extends Controller
         $units = Unit::all();
         $sizes = Size::all();
         $colors = Color::all();
-        $products = PRoduct::where('status', 1)->latest()->limit(12)->get();
+        $products = Product::where('status', 1)->latest()->limit(12)->get();
 
         return view('frontend.welcome', compact('categories', 'subcategories', 'brands', 'units', 'sizes', 'colors', 'products'));
+    }
+
+    public function view_details($id)
+    {
+        return view('frontend.pages.view_details');
     }
 }

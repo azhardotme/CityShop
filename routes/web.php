@@ -13,8 +13,6 @@ use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
 
-//Frontend routes
-Route::get('/', [HomeController::class, 'index']);
 
 //Backend routes
 Route::get('/adminLogin', [AdminController::class, 'index']);
@@ -51,3 +49,8 @@ Route::get('/color-status{color}', [ColorController::class, 'change_status']);
 //Product route
 Route::resource('/products', ProductController::class);
 Route::get('/product-status{product}', [ProductController::class, 'change_status']);
+
+
+//Frontend routes
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/view_product/{id}', [HomeController::class, 'view_details']);
