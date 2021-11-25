@@ -30,6 +30,14 @@ class HomeController extends Controller
 
     public function view_details($id)
     {
-        return view('frontend.pages.view_details');
+        $categories = Category::all();
+        $subcategories = SubCategory::all();
+        $brands = Brand::all();
+        $units = Unit::all();
+        $sizes = Size::all();
+        $colors = Color::all();
+        $product = Product::findOrFail($id);
+
+        return view('frontend.pages.view_details', compact('categories', 'subcategories', 'brands', 'units', 'sizes', 'colors', 'product'));
     }
 }
