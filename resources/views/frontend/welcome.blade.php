@@ -61,6 +61,8 @@
                         <div id="tab1" class="tab-pane active">
                             <div class="products-slick" data-nav="#slick-nav-1">
                                 <!-- product -->
+
+
                                 @foreach ($products as $product)
                                 @php
                                     $product['image']=explode('|',$product->image);
@@ -70,6 +72,7 @@
                                 <div class="product">
                                     <div class="product-img">
                                         <img src="{{asset('/image/'.$images)}}" alt="Product Image" style="height: 250px" width="200px">
+
                                         <div class="product-label">
                                             <span class="sale">-30%</span>
                                             <span class="new">NEW</span>
@@ -77,7 +80,8 @@
                                     </div>
                                     <div class="product-body">
                                         <p class="product-category">{{$product->category->name}}</p>
-                                        <h3 class="product-name"><a href="#">{{$product->name}}</a></h3>
+                                        <h3 class="product-name"><a href="{{url('/view_product/'.$product->id)}}">{{$product->name}}</a></h3>
+                                        {{-- <h3 class="product-name"><a href="#">{{$product->name}}</a></h3> --}}
                                         <h4 class="product-price">&#2547; {{$product->price}} <del class="product-old-price">&#2547; {{$product->price}}</del></h4>
                                         <div class="product-rating">
                                             <i class="fa fa-star"></i>
