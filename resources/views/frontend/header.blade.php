@@ -9,7 +9,15 @@
             </ul>
             <ul class="header-links pull-right">
                 <li><a href="#">&#2547; BDT</a></li>
-                <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+                @php
+                    $customer_id= Session::get('id');
+                @endphp
+                @if ($customer_id != Null)
+                <li><a href="{{url('/customer-logout')}}"><i class="fa fa-user-o"></i>Logout</a></li>
+                @else
+                <li><a href="{{url('/login-check')}}"><i class="fa fa-user-o"></i>Login</a></li>
+                @endif
+
             </ul>
         </div>
     </div>
@@ -60,45 +68,51 @@
                             </a>
                         </div>
                         <!-- /Wishlist -->
-
                         <!-- Cart -->
+                        @php
+                            $cart_array=cardArray();
+                        @endphp
                         <div class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>Your Cart</span>
-                                <div class="qty">3</div>
+                                <div class="qty"><?php echo count($cart_array) ?></div>
                             </a>
                             <div class="cart-dropdown">
                                 <div class="cart-list">
-                                    <div class="product-widget">
-                                        <div class="product-img">
-                                            <img src="{{asset('frontend/img/product01.png')}}" alt="">
-                                        </div>
-                                        <div class="product-body">
-                                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                            <h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
-                                        </div>
-                                        <button class="delete"><i class="fa fa-close"></i></button>
-                                    </div>
+                                    @foreach ($cart_array as $v_add_cart)
+                                    {{-- @php
+                                    $images = $v_add_cart['attributes'][0];
+                                    $images=explode('|',$images);
+                                    $images=$images[0];
+                                    @endphp --}}
 
                                     <div class="product-widget">
                                         <div class="product-img">
-                                            <img src="./img/product02.png" alt="">
+                                            {{-- <img src="{{asset('/image/'.$images)}}"> --}}
                                         </div>
                                         <div class="product-body">
-                                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                            <h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
+                                            <h3 class="product-name"><a href="#">{{$v_add_cart['name']}}</a></h3>
+                                            <h4 class="product-price"><span class="qty">{{$v_add_cart['quantity']}}x</span> &#2547; {{$v_add_cart['price']}}</h4>
                                         </div>
-                                        <button class="delete"><i class="fa fa-close"></i></button>
+                                        <a class="delete" href="{{url('/delete-cart/'.$v_add_cart['id'])}}"><i class="fa fa-close"></i></a>
+
                                     </div>
+                                    @endforeach
                                 </div>
                                 <div class="cart-summary">
-                                    <small>3 Item(s) selected</small>
-                                    <h5>SUBTOTAL: $2940.00</h5>
+                                    <small><?php echo count($cart_array) ?> Item(s) selected</small>
+                                    <h5>SUBTOTAL: &#2547; {{Cart::getTotal()}}</h5>
                                 </div>
                                 <div class="cart-btns">
-                                    <a href="#">View Cart</a>
-                                    <a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+                                    @php
+                                    $customer_id= Session::get('id');
+                                @endphp
+                                @if ($customer_id != Null)
+                                <a style="width: 100% ; background-color:rgb(194, 48, 48)" href="{{url('/checkout')}}"><i class="fa fa-arrow-circle-right"></i>Checkout</a>
+                                @else
+                                <a style="width: 100% ; background-color:rgb(194, 48, 48)"  href="{{url('/login-check')}}"><i class="fa fa-arrow-circle-right"></i>Checkout</a>
+                                @endif
                                 </div>
                             </div>
                         </div>

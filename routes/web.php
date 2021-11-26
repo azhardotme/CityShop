@@ -9,6 +9,9 @@ use App\Http\Controllers\Backend\UnitController;
 use App\Http\Controllers\Backend\SizeController;
 use App\Http\Controllers\Backend\ColorController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\CartController;
+use App\Http\Controllers\Backend\CustomerController;
+use App\Http\Controllers\Backend\CheckoutController;
 use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -50,7 +53,24 @@ Route::get('/color-status{color}', [ColorController::class, 'change_status']);
 Route::resource('/products', ProductController::class);
 Route::get('/product-status{product}', [ProductController::class, 'change_status']);
 
+//Add to Cart Route
+Route::post('/add-to-cart', [CartController::class, 'add_to_cart']);
+Route::get('/delete-cart/{id}', [CartController::class, 'delete']);
+
+//Checkout route
+Route::get('/checkout', [CheckoutController::class, 'index']);
+Route::get('/login-check', [CheckoutController::class, 'login_check']);
+Route::post('/save-shipping-address', [CheckoutController::class, 'save_shipping_address']);
+Route::get('/order-details', [CheckoutController::class, 'order_details']);
+
+
+//Customer Login.Registration & logout routes
+Route::post('/customer-login', [CustomerController::class, 'login']);
+Route::post('/customer-registration', [CustomerController::class, 'registration']);
+Route::get('/customer-logout', [CustomerController::class, 'logout']);
 
 //Frontend routes
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/view_product/{id}', [HomeController::class, 'view_details']);
+Route::get('/product_by_cat/{id}', [HomeController::class, 'product_by_cat']);
+Route::get('/product_by_subcat/{id}', [HomeController::class, 'product_by_subcat']);
