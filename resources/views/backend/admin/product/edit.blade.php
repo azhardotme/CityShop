@@ -95,13 +95,11 @@
                        <select name="size">
                            <option>Select Size</option>
                            @foreach ($sizes as $size)
-                           <option value="{{$size->id}}">{{$size->size}}</option>
+                           <option value="{{$size->id}}">{{implode(',',json_decode($size->size))}}</option>
                            @endforeach
-
                        </select>
                     </div>
                 </div>
-
 
                 <div class="control-group">
                     <label class="control-label">Color</label>
@@ -109,7 +107,7 @@
                        <select name="color">
                            <option>Select Color</option>
                            @foreach ($colors as $color)
-                           <option value="{{$color->id}}">{{$color->color}}</option>
+                           <option value="{{$color->id}}">{{implode(',',json_decode($color->color))}}</option>
                            @endforeach
 
                        </select>

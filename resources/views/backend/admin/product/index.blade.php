@@ -49,8 +49,9 @@
                      <tr>
                         <td>{{$product->code}}</td>
                         <td>{{$product->name}}</td>
-                        <td>{!! $product->description !!}</td>
                         <td>{{$product->price}}</td>
+
+
                         <td>
                             @foreach ($product->image as $image)
                             <img height="50px" width="50px" src="{{asset('/image/'.$image)}}">
@@ -60,7 +61,7 @@
                          <td>{{$product->category->name}}</td>
                          <td>{{$product->subcategory->name}}</td>
                          <td>{{$product->brand->name}}</td>
-
+                         <td>{!! $product->description !!}</td>
 
                         <td class="center">
                             @if ($product->status==1)

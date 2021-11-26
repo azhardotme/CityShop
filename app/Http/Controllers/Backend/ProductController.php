@@ -117,6 +117,7 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
 
+
         $categories = Category::all();
         $subcategories = SubCategory::all();
         $brands = Brand::all();
@@ -136,6 +137,9 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        $color = explode(',', $request->color);
+        $size = explode(',', $request->size);
+
         $update = $product->update([
             'name' => $request->name,
             'code' => $request->code,
@@ -144,8 +148,8 @@ class ProductController extends Controller
             'subcat_id' => $request->subcategory,
             'brand_id' => $request->brand,
             'unit_id' => $request->unit,
-            'size_id' => $request->size,
-            'color_id' => $request->color,
+            'size_id' => (int)json_encode($size),
+            'color_id' => (int)json_encode($color),
             'description' => $request->description,
         ]);
 
