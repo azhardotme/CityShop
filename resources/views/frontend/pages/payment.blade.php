@@ -2,7 +2,8 @@
 @extends('frontend.master')
 @section('content')
 
-   <div class="col-md-5 order-details">
+<div class="col-md-4"></div>
+   <div class="col-md-4 order-details" style="margin-top: 100px; margin-bottom: 50px">
     <div class="section-title text-center">
         <h3 class="title">Your Order</h3>
     </div>
@@ -11,54 +12,57 @@
             <div><strong>PRODUCT</strong></div>
             <div><strong>TOTAL</strong></div>
         </div>
+        @foreach ($cart_array as $cart)
         <div class="order-products">
             <div class="order-col">
-                <div>1x Product Name Goes Here</div>
-                <div>$980.00</div>
-            </div>
-            <div class="order-col">
-                <div>2x Product Name Goes Here</div>
-                <div>$980.00</div>
+                <div>{{ $cart['quantity'] }}x {{ $cart['name'] }}</div>
+                <div> &#2547; {{ Cart::get($cart['id'])->getPriceSum() }}</div>
             </div>
         </div>
+        @endforeach
         <div class="order-col">
             <div>Shiping</div>
-            <div><strong>FREE</strong></div>
+            <div><strong>&#2547; 45</strong></div>
         </div>
         <div class="order-col">
             <div><strong>TOTAL</strong></div>
-            <div><strong class="order-total">$2940.00</strong></div>
+            <div><strong class="order-total">&#2547; {{ Cart::getTotal()+45}}</strong></div>
         </div>
+    </div>
+    <form action="{{url('/order-place')}}" method="POST">
+        @csrf
+    <div class="section-title text-center" style="margin-top: 40px">
+    <h3 class="title" style="color: green">Select a payment method</h3>
     </div>
     <div class="payment-method">
         <div class="input-radio">
-            <input type="radio" name="payment" id="payment-1">
+            <input type="radio" name="payment" id="payment-1" value="cash">
             <label for="payment-1">
                 <span></span>
-                Direct Bank Transfer
+                Cash on Delivery
             </label>
             <div class="caption">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p>You can also select Cash on Delivery.</p>
             </div>
         </div>
         <div class="input-radio">
-            <input type="radio" name="payment" id="payment-2">
+            <input type="radio" name="payment" id="payment-2" value="Bkash">
             <label for="payment-2">
                 <span></span>
-                Cheque Payment
+                BKash
             </label>
             <div class="caption">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p>You can use BKash no: 0155555555555</p>
             </div>
         </div>
         <div class="input-radio">
-            <input type="radio" name="payment" id="payment-3">
+            <input type="radio" name="payment" id="payment-3" value="Rocket">
             <label for="payment-3">
                 <span></span>
-                Paypal System
+               Rocket
             </label>
             <div class="caption">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p>You can use Rocket no: 0155555555555</p>
             </div>
         </div>
     </div>
@@ -69,7 +73,8 @@
             I've read and accept the <a href="#">terms & conditions</a>
         </label>
     </div>
-    <a href="#" class="primary-btn order-submit">Place order</a>
+    <input type="submit" class="primary-btn order-submit" value="PLace Order" style="float: right">
+</form>
 </div>
-
+<div class="col-md-4"></div>
 @endsection
