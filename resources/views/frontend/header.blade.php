@@ -81,15 +81,15 @@
                             <div class="cart-dropdown">
                                 <div class="cart-list">
                                     @foreach ($cart_array as $v_add_cart)
-                                    {{-- @php
+                                    @php
                                     $images = $v_add_cart['attributes'][0];
                                     $images=explode('|',$images);
                                     $images=$images[0];
-                                    @endphp --}}
+                                    @endphp
 
                                     <div class="product-widget">
                                         <div class="product-img">
-                                            {{-- <img src="{{asset('/image/'.$images)}}"> --}}
+                                            <img src="{{asset('/image/'.$images)}}">
                                         </div>
                                         <div class="product-body">
                                             <h3 class="product-name"><a href="#">{{$v_add_cart['name']}}</a></h3>

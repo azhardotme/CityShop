@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Shipping;
 use Illuminate\Support\Facades\Redirect;
-use Session;
 
 class CheckoutController extends Controller
 {
@@ -32,12 +32,13 @@ class CheckoutController extends Controller
         $data['address'] = $request->address;
 
         $s_id = Shipping::insertGetId($data);
+
         Session::put('id', $s_id);
-        return Redirect::to('/order-details');
+        return Redirect::to('/payment');
     }
 
-    public function order_details()
+    public function payment()
     {
-        return view('frontend.pages.order_details');
+        return view('frontend.pages.payment');
     }
 }

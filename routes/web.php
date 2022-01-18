@@ -61,10 +61,10 @@ Route::get('/delete-cart/{id}', [CartController::class, 'delete']);
 Route::get('/checkout', [CheckoutController::class, 'index']);
 Route::get('/login-check', [CheckoutController::class, 'login_check']);
 Route::post('/save-shipping-address', [CheckoutController::class, 'save_shipping_address']);
-Route::get('/order-details', [CheckoutController::class, 'order_details']);
+Route::get('/payment', [CheckoutController::class, 'payment']);
 
 
-//Customer Login.Registration & logout routes
+//Customer Login,Registration & logout routes
 Route::post('/customer-login', [CustomerController::class, 'login']);
 Route::post('/customer-registration', [CustomerController::class, 'registration']);
 Route::get('/customer-logout', [CustomerController::class, 'logout']);
