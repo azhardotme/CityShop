@@ -67,6 +67,8 @@ Route::post('/order-place', [CheckoutController::class, 'order_place']);
 
 //Manage orders...
 Route::get('/manage-order', [OrderController::class, 'manage_order']);
+Route::get('/view-order/{id}', [OrderController::class, 'view_order']);
+
 
 //Customer Login,Registration & logout routes
 Route::post('/customer-login', [CustomerController::class, 'login']);

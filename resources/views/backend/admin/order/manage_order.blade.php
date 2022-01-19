@@ -44,8 +44,8 @@
                      <tr>
                         <td class="center">{{$order->id}}</td>
                         <td class="center">{{$order->customer->name}}</td>
-                        <td class="center">{{$order->total }}</td>
-                        <td class="center">{{ \Carbon\Carbon::parse($order->created_at)->format('Md,Y,h:iA')}}</td>
+                        <td class="center">{{$order->total }} &#2547; </td>
+                        <td class="center">{{ \Carbon\Carbon::parse($order->created_at)->format('M d,Y,h:iA')}}</td>
                         <td class="center">
 
                             <span class="label label-success">Active</span>
@@ -66,7 +66,7 @@
                                 </a>
                             </div>
                                 <div class="span2">
-                                    <a class="btn btn-info" href="#">
+                                    <a class="btn btn-info" href="{{url('/view-order/'.$order->id)}}">
                                         <i class="halflings-icon white edit"></i>
                                     </a>
                                 </div>
