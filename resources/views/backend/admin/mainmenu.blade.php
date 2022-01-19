@@ -59,7 +59,7 @@
                 </ul>
             </li>
 
-
+            <li><a href="{{url('/manage-order')}}"><i class="icon-edit"></i><span class="hidden-tablet"> Orders</span></a></li>
 
 
             <li><a href="form.html"><i class="icon-edit"></i><span class="hidden-tablet"> Forms</span></a></li>

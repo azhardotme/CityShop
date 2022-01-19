@@ -78,5 +78,16 @@ class CheckoutController extends Controller
             $oddata['product_sales_quantity'] = $cartContent->quantity;
             DB::table('order_details')->insert($oddata);
         }
+
+        if ($payment_method == 'cash') {
+            Cart::clear();
+            return view('frontend.pages.payment_method');
+        } elseif ($payment_method == 'Rocket') {
+            Cart::clear();
+            return view('frontend.pages.payment_method');
+        } elseif ($payment_method == 'Bkash') {
+            Cart::clear();
+            return view('frontend.pages.payment_method');
+        }
     }
 }

@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\CartController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\CheckoutController;
+use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -63,6 +64,9 @@ Route::get('/login-check', [CheckoutController::class, 'login_check']);
 Route::post('/save-shipping-address', [CheckoutController::class, 'save_shipping_address']);
 Route::get('/payment', [CheckoutController::class, 'payment']);
 Route::post('/order-place', [CheckoutController::class, 'order_place']);
+
+//Manage orders...
+Route::get('/manage-order', [OrderController::class, 'manage_order']);
 
 //Customer Login,Registration & logout routes
 Route::post('/customer-login', [CustomerController::class, 'login']);
