@@ -80,3 +80,7 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/view_product/{id}', [HomeController::class, 'view_details']);
 Route::get('/product_by_cat/{id}', [HomeController::class, 'product_by_cat']);
 Route::get('/product_by_subcat/{id}', [HomeController::class, 'product_by_subcat']);
+
+Route::fallback(function () {
+    return view('error');
+});
